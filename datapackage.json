@@ -1,0 +1,434 @@
+{
+  "datahub": {
+    "created": "2017-11-08T21:56:54.976243",
+    "findability": "published",
+    "flowid": "core/global-temp/10",
+    "hash": "7ac9a2d12b1366b0e547de6a9dd57ca6",
+    "modified": "2018-08-06T09:10:10.445044",
+    "owner": "core",
+    "ownerid": "core",
+    "stats": {
+      "bytes": 616448,
+      "rowcount": 3562
+    }
+  },
+  "id": "core/global-temp",
+  "licenses": [
+    {
+      "name": "ODC-PDDL-1.0",
+      "path": "http://opendatacommons.org/licenses/pddl/",
+      "title": "Open Data Commons Public Domain Dedication and License v1.0"
+    }
+  ],
+  "name": "global-temp",
+  "readme": "Global Temperature Time Series. Data are included from the GISS Surface Temperature (GISTEMP) analysis and the global component of Climate at a Glance (GCAG). Two datasets are provided: 1) global monthly mean and 2) annual mean temperature anomalies in degrees Celsius from 1880 to the present.\n\n## Data\n\n### Description\n\n1. [GISTEMP Global Land-Ocean Temperature Index][gistemp]:\n\n  > Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies [i.e. deviations from the corresponding 1951-1980 means]. Global-mean monthly [...] and annual means, 1880-present, updated through most recent month.\n\n1. [Global component of Climate at a Glance (GCAG)][gcag]:\n\n  > Global temperature anomaly data come from the Global Historical Climatology Network-Monthly (GHCN-M) data set and International Comprehensive Ocean-Atmosphere Data Set (ICOADS), which have data from 1880 to the present. These two datasets are blended into a single product to produce the combined global land and ocean temperature anomalies. The available timeseries of global-scale temperature anomalies are calculated with respect to the 20th century average [...].\n\n### Citations\n\n1. *GISTEMP: NASA Goddard Institute for Space Studies (GISS) Surface Temperature Analysis, Global Land-Ocean Temperature Index.*\n1. *NOAA National Climatic Data Center (NCDC), global component of Climate at a Glance (GCAG).*\n\n### Sources\n\n1. \n  * Name: GISTEMP Global Land-Ocean Temperature Index\n  * Web: http://data.giss.nasa.gov/gistemp\n1. \n  * Name: Global component of Climate at a Glance (GCAG)\n  * Web: http://www.ncdc.noaa.gov/cag/data-info/global\n\n### Additional Data\n\n* Upstream datasets:\n  * [GHCN-M][ghcn-m]\n  * [ERSST][ersst]\n  * [ICOADS][icoads]\n* Other:\n  * [HadCRUT4][hadcrut4] time series data are not included in the published Data Package at this time because of the dataset's restrictive [terms and conditions][hadcrut4-terms]. However, the data preparation script supports processing the dataset.\n\n## Preparation\n\n### Requirements\n\nData preparation requires Python 2.\n\n### Processing\n\nRun the following script from this directory to download and process the data:\n\n```bash\nmake data\n```\n\nHundredths of degrees Celsius in the GISTEMP Global Land-Ocean Temperature Index data are converted to degrees Celsius.\n\nA HadCRUT4 processing script is available but not run by default.\n\n### Resources\n\nThe raw data are output to `./tmp`. The processed data are output to `./data`.\n\n## License\n\n### ODC-PDDL-1.0\n\nThis Data Package and these datasets are made available under the Public Domain Dedication and License v1.0 whose full text can be found at: http://www.opendatacommons.org/licenses/pddl/1.0/\n\n### Notes\n\nThe upstream datasets do not impose any specific restrictions on using these data in a public or commercial product:\n\n* [GHCN-N](http://www.esrl.noaa.gov/psd/data/gridded/data.ghcncams.html)\n* [ERSST](http://www.esrl.noaa.gov/psd/data/gridded/data.noaa.ersst.html)\n* [ICOADS](http://icoads.noaa.gov/data.icoads.html)\n\n[gistemp]: http://data.giss.nasa.gov/gistemp/\n[gcag]: http://www.ncdc.noaa.gov/cag/data-info/global\n[hadcrut4]: http://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/download.html#regional_series\n[hadcrut4-terms]: http://www.metoffice.gov.uk/hadobs/hadcrut4/terms_and_conditions.html\n[ghcn-m]: http://www.ncdc.noaa.gov/ghcnm/v3.php\n[ersst]: http://www.ncdc.noaa.gov/data-access/marineocean-data/extended-reconstructed-sea-surface-temperature-ersst-v3b\n[icoads]: http://icoads.noaa.gov/\n",
+  "related": [
+    {
+      "formats": [
+        "CSV",
+        "JSON"
+      ],
+      "path": "/core/co2-ppm",
+      "publisher": "core",
+      "title": "Trends in Atmospheric Carbon Dioxide"
+    },
+    {
+      "formats": [
+        "CSV",
+        "JSON"
+      ],
+      "path": "/core/co2-fossil-by-nation",
+      "publisher": "core",
+      "title": "CO2 Emissions from Fossil Fuels"
+    },
+    {
+      "formats": [
+        "CSV",
+        "JSON"
+      ],
+      "path": "/core/sea-level-rise",
+      "publisher": "core",
+      "title": "Sea level rise"
+    },
+    {
+      "formats": [
+        "CSV",
+        "JSON"
+      ],
+      "path": "/core/glacier-mass-balance",
+      "publisher": "core",
+      "title": "Glacier mass balance"
+    }
+  ],
+  "resources": [
+    {
+      "bytes": 1015,
+      "datahub": {
+        "type": "derived/report"
+      },
+      "description": "Validation report for tabular data",
+      "dpp:streamedFrom": "validation_report.json",
+      "format": "json",
+      "hash": "32be8fde97857df1e4edfd32743bb263",
+      "name": "validation_report",
+      "path": "https://pkgstore.datahub.io/core/global-temp/validation_report/data/32be8fde97857df1e4edfd32743bb263/validation_report.json",
+      "profile": "data-resource"
+    },
+    {
+      "bytes": 5230,
+      "datahub": {
+        "derivedFrom": [
+          "annual"
+        ],
+        "type": "derived/csv"
+      },
+      "dialect": {
+        "delimiter": ",",
+        "doubleQuote": true,
+        "lineTerminator": "\r\n",
+        "quoteChar": "\"",
+        "skipInitialSpace": false
+      },
+      "dpp:streamedFrom": "https://s3.amazonaws.com/rawstore.datahub.io/a26b154688b061cdd04f1df36e4408be.csv",
+      "encoding": "utf-8",
+      "format": "csv",
+      "hash": "a26b154688b061cdd04f1df36e4408be",
+      "mediatype": "text/csv",
+      "name": "annual_csv",
+      "path": "https://pkgstore.datahub.io/core/global-temp/annual_csv/data/a26b154688b061cdd04f1df36e4408be/annual_csv.csv",
+      "pathType": "local",
+      "profile": "data-resource",
+      "rowcount": 274,
+      "schema": {
+        "fields": [
+          {
+            "name": "Source",
+            "type": "string"
+          },
+          {
+            "description": "YYYY",
+            "name": "Year",
+            "type": "year"
+          },
+          {
+            "decimalChar": ".",
+            "description": "Average global mean temperature anomalies in degrees Celsius relative to a base period. GISTEMP base period: 1951-1980. GCAG base period: 20th century average.",
+            "groupChar": "",
+            "name": "Mean",
+            "type": "number"
+          }
+        ]
+      },
+      "signed": true
+    },
+    {
+      "bytes": 82182,
+      "datahub": {
+        "derivedFrom": [
+          "monthly"
+        ],
+        "type": "derived/csv"
+      },
+      "dialect": {
+        "delimiter": ",",
+        "doubleQuote": true,
+        "lineTerminator": "\r\n",
+        "quoteChar": "\"",
+        "skipInitialSpace": false
+      },
+      "dpp:streamedFrom": "https://s3.amazonaws.com/rawstore.datahub.io/5a463e14023334e1f90454da11d3deee.csv",
+      "encoding": "utf-8",
+      "format": "csv",
+      "hash": "c1321100952fc1b643ec604ae65a104a",
+      "mediatype": "text/csv",
+      "name": "monthly_csv",
+      "path": "https://pkgstore.datahub.io/core/global-temp/monthly_csv/data/c1321100952fc1b643ec604ae65a104a/monthly_csv.csv",
+      "pathType": "local",
+      "profile": "data-resource",
+      "rowcount": 3288,
+      "schema": {
+        "fields": [
+          {
+            "name": "Source",
+            "type": "string"
+          },
+          {
+            "description": "YYYY-MM",
+            "format": "%Y-%m-%d",
+            "name": "Date",
+            "type": "date"
+          },
+          {
+            "decimalChar": ".",
+            "description": "Monthly mean temperature anomalies in degrees Celsius relative to a base period. GISTEMP base period: 1951-1980. GCAG base period: 20th century average.",
+            "groupChar": "",
+            "name": "Mean",
+            "type": "number"
+          }
+        ]
+      },
+      "signed": true
+    },
+    {
+      "bytes": 13693,
+      "datahub": {
+        "derivedFrom": [
+          "annual"
+        ],
+        "type": "derived/json"
+      },
+      "dpp:streamedFrom": "https://s3.amazonaws.com/rawstore.datahub.io/a26b154688b061cdd04f1df36e4408be.csv",
+      "encoding": "utf-8",
+      "format": "json",
+      "hash": "529e69dbd597709e36ce11a5d0bb7243",
+      "mediatype": "text/csv",
+      "name": "annual_json",
+      "path": "https://pkgstore.datahub.io/core/global-temp/annual_json/data/529e69dbd597709e36ce11a5d0bb7243/annual_json.json",
+      "pathType": "local",
+      "profile": "data-resource",
+      "rowcount": 274,
+      "schema": {
+        "fields": [
+          {
+            "name": "Source",
+            "type": "string"
+          },
+          {
+            "description": "YYYY",
+            "name": "Year",
+            "type": "year"
+          },
+          {
+            "description": "Average global mean temperature anomalies in degrees Celsius relative to a base period. GISTEMP base period: 1951-1980. GCAG base period: 20th century average.",
+            "name": "Mean",
+            "type": "number"
+          }
+        ]
+      },
+      "signed": true
+    },
+    {
+      "bytes": 190493,
+      "datahub": {
+        "derivedFrom": [
+          "monthly"
+        ],
+        "type": "derived/json"
+      },
+      "dpp:streamedFrom": "https://s3.amazonaws.com/rawstore.datahub.io/5a463e14023334e1f90454da11d3deee.csv",
+      "encoding": "utf-8",
+      "format": "json",
+      "hash": "4c7af7363a20648a68b8f2038a6765d6",
+      "mediatype": "text/csv",
+      "name": "monthly_json",
+      "path": "https://pkgstore.datahub.io/core/global-temp/monthly_json/data/4c7af7363a20648a68b8f2038a6765d6/monthly_json.json",
+      "pathType": "local",
+      "profile": "data-resource",
+      "rowcount": 3288,
+      "schema": {
+        "fields": [
+          {
+            "name": "Source",
+            "type": "string"
+          },
+          {
+            "description": "YYYY-MM",
+            "format": "%Y-%m-%d",
+            "name": "Date",
+            "type": "date"
+          },
+          {
+            "description": "Monthly mean temperature anomalies in degrees Celsius relative to a base period. GISTEMP base period: 1951-1980. GCAG base period: 20th century average.",
+            "name": "Mean",
+            "type": "number"
+          }
+        ]
+      },
+      "signed": true
+    },
+    {
+      "bytes": 52312,
+      "datahub": {
+        "type": "derived/zip"
+      },
+      "description": "Compressed versions of dataset. Includes normalized CSV and JSON data with original data and datapackage.json.",
+      "dpp:streamedFrom": "/tmp/865.global-temp.zip",
+      "format": "zip",
+      "name": "global-temp_zip",
+      "path": "https://pkgstore.datahub.io/core/global-temp/global-temp_zip/data/a03dada16f4d81eb39fb3b974e3d271f/global-temp_zip.zip",
+      "profile": "data-resource"
+    },
+    {
+      "bytes": 197539,
+      "datahub": {
+        "derivedFrom": [
+          "monthly"
+        ],
+        "type": "derived/preview"
+      },
+      "dialect": {
+        "delimiter": ",",
+        "doubleQuote": true,
+        "lineTerminator": "\r\n",
+        "quoteChar": "\"",
+        "skipInitialSpace": false
+      },
+      "dpp:streamedFrom": "/tmp/tmpxuxvao1_/core/global-temp/monthly_csv/data/c1321100952fc1b643ec604ae65a104a/monthly_csv.csv",
+      "encoding": "utf-8",
+      "forView": [
+        "datahub-preview-monthly_csv_preview"
+      ],
+      "format": "json",
+      "hash": "f3ab720e33263ee1b8ca95804ae9366f",
+      "mediatype": "text/csv",
+      "name": "monthly_csv_preview",
+      "path": "https://pkgstore.datahub.io/core/global-temp/monthly_csv_preview/data/f3ab720e33263ee1b8ca95804ae9366f/monthly_csv_preview.json",
+      "pathType": "local",
+      "profile": "data-resource",
+      "rowcount": 5288,
+      "schema": {
+        "fields": [
+          {
+            "name": "Source",
+            "type": "string"
+          },
+          {
+            "description": "YYYY-MM",
+            "format": "%Y-%m-%d",
+            "name": "Date",
+            "type": "date"
+          },
+          {
+            "decimalChar": ".",
+            "description": "Monthly mean temperature anomalies in degrees Celsius relative to a base period. GISTEMP base period: 1951-1980. GCAG base period: 20th century average.",
+            "groupChar": "",
+            "name": "Mean",
+            "type": "number"
+          }
+        ]
+      },
+      "signed": true
+    },
+    {
+      "bytes": 4955,
+      "datahub": {
+        "type": "source/tabular"
+      },
+      "dpp:streamedFrom": "https://s3.amazonaws.com/rawstore.datahub.io/a26b154688b061cdd04f1df36e4408be.csv",
+      "encoding": "ISO-8859-2",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "name": "annual",
+      "path": "https://pkgstore.datahub.io/core/global-temp/annual/archive/a26b154688b061cdd04f1df36e4408be/annual.csv",
+      "pathType": "local",
+      "profile": "data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "Source",
+            "type": "string"
+          },
+          {
+            "description": "YYYY",
+            "name": "Year",
+            "type": "year"
+          },
+          {
+            "description": "Average global mean temperature anomalies in degrees Celsius relative to a base period. GISTEMP base period: 1951-1980. GCAG base period: 20th century average.",
+            "name": "Mean",
+            "type": "number"
+          }
+        ]
+      },
+      "signed": true
+    },
+    {
+      "bytes": 69029,
+      "datahub": {
+        "type": "source/tabular"
+      },
+      "dpp:streamedFrom": "https://s3.amazonaws.com/rawstore.datahub.io/5a463e14023334e1f90454da11d3deee.csv",
+      "encoding": "ISO-8859-2",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "name": "monthly",
+      "path": "https://pkgstore.datahub.io/core/global-temp/monthly/archive/5a463e14023334e1f90454da11d3deee/monthly.csv",
+      "pathType": "local",
+      "profile": "data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "Source",
+            "type": "string"
+          },
+          {
+            "description": "YYYY-MM",
+            "format": "any",
+            "name": "Date",
+            "type": "date"
+          },
+          {
+            "description": "Monthly mean temperature anomalies in degrees Celsius relative to a base period. GISTEMP base period: 1951-1980. GCAG base period: 20th century average.",
+            "name": "Mean",
+            "type": "number"
+          }
+        ]
+      },
+      "signed": true
+    }
+  ],
+  "sources": [
+    {
+      "name": "GISTEMP Global Land-Ocean Temperature Index",
+      "path": "http://data.giss.nasa.gov/gistemp",
+      "title": "GISTEMP Global Land-Ocean Temperature Index"
+    },
+    {
+      "name": "Global component of Climate at a Glance (GCAG)",
+      "path": "http://www.ncdc.noaa.gov/cag/time-series/global",
+      "title": "Global component of Climate at a Glance (GCAG)"
+    }
+  ],
+  "title": "Global Temperature Time Series",
+  "version": "0.1.0",
+  "views": [
+    {
+      "name": "graph",
+      "spec": {
+        "group": "Year",
+        "series": [
+          "Mean"
+        ],
+        "type": "column"
+      },
+      "specType": "simple",
+      "title": "Monthly mean temperature anomalies in degrees Celsius relative to a base period"
+    },
+    {
+      "datahub": {
+        "type": "preview"
+      },
+      "name": "datahub-preview-annual_csv_preview",
+      "resources": [
+        "annual"
+      ],
+      "specType": "table",
+      "transform": {
+        "limit": 2000
+      }
+    },
+    {
+      "datahub": {
+        "type": "preview"
+      },
+      "name": "datahub-preview-monthly_csv_preview",
+      "resources": [
+        "monthly"
+      ],
+      "specType": "table",
+      "transform": {
+        "limit": 2000
+      }
+    }
+  ]
+}
